@@ -1,0 +1,10 @@
+# Python virtualenv created by tools/make-docx.sh
+tools/.venv/
+__pycache__/
+*.pyc
+
+# Vercel
+.vercel/
+
+# macOS
+.DS_Store

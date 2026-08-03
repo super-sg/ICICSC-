@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace the host below with your live domain before publishing.
+Sitemap: https://icngci2027.sharda.ac.in/sitemap.xml
