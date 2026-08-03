@@ -211,3 +211,51 @@ check afterwards:
 
 Enable HTTPS. A conference site that asks for bank transfers over plain HTTP
 will — correctly — be distrusted.
+
+---
+
+## The Word document
+
+`assets/downloads/ICNGCI-2027-Conference-Information.docx` holds the complete
+content of the site — about, all 6 tracks and 90 topics, call for papers,
+important dates, submission guidelines, fee tables, the full committee
+including the 260-member TPC roster, speakers, programme, venue and contacts.
+About 8,600 words across 36 tables.
+
+It is **generated from the HTML**, not maintained separately, so the two cannot
+drift apart. After editing any page:
+
+```bash
+./tools/make-docx.sh
+```
+
+First run creates `tools/.venv` and installs `python-docx` (its only
+dependency, kept out of your system Python). The venv is gitignored.
+
+---
+
+## Deploying to Vercel
+
+The repo is at <https://github.com/super-sg/ICNGCI-Conference-SIte>.
+
+**Dashboard (recommended)** — gives you a redeploy on every `git push`:
+
+1. <https://vercel.com/new> → **Import Git Repository** → pick `ICNGCI-Conference-SIte`.
+2. Framework Preset: **Other**. Leave Build Command, Output Directory and
+   Install Command **empty** — this is a static site with no build step.
+3. **Deploy.**
+
+**CLI**, if you prefer:
+
+```bash
+npx vercel login
+npx vercel --prod
+```
+
+`vercel.json` is already in the repo: long cache on images, short
+must-revalidate cache on CSS/JS (there is no content hashing, so a long cache
+there would strand visitors on stale styles), and standard security headers.
+`404.html` is picked up automatically.
+
+After the first deploy, update the domain in `robots.txt`, `sitemap.xml` and
+the `<link rel="canonical">` in `index.html`.
