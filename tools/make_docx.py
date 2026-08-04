@@ -241,6 +241,25 @@ for tag, txt in blocks(frag):
             continue
         para(txt)
 
+# --- track record: the link text alone is useless in print, emit the URLs ---
+tr = re.search(r'(?s)id="track-record">(.*?)</section>', read("about.html"))
+if tr:
+    h2("Track record")
+    lead = re.search(r'(?s)<p class="lede">(.*?)</p>', tr.group(1))
+    if lead:
+        para(text_of(lead.group(1)))
+    for cm in re.finditer(r'(?s)<h3>(.*?)</h3>\s*<ul class="linklist">(.*?)</ul>', tr.group(1)):
+        h3(text_of(cm.group(1)))
+        for am in re.finditer(r'<a href="([^"]+)"[^>]*>(.*?)</a>', cm.group(2)):
+            pp = doc.add_paragraph()
+            pp.paragraph_format.left_indent = Inches(0.25)
+            pp.paragraph_format.space_after = Pt(2)
+            r1 = pp.add_run(text_of(am.group(2)) + " — ")
+            r1.font.size = Pt(10)
+            r2 = pp.add_run(am.group(1))
+            r2.font.size = Pt(9)
+            r2.font.color.rgb = BLUE
+
 # ==========================================================================
 # 2. TRACKS
 # ==========================================================================

@@ -14,7 +14,7 @@ live wrong.
 | What | Where | Why |
 |---|---|---|
 | **Bank account details** — ICICI a/c `025405005815`, IFSC `ICIC0007692`, SWIFT `ICICINBBCTS`, MICR `110229037`, "Sharda University — Seminar" | `registration.html` | These are carried over from the previous conference on this campus. **Confirm every field against a current document from the university finance office**, and confirm this conference is to use the same account. A red warning box sits above the table on the page — delete it once verified. |
-| **Committee and speaker names** — 68 people | `committee.html`, `speakers.html`, `contact.html`, `index.html` | Carried forward from the previous edition. **Nobody should be listed as a patron, chair, advisor, reviewer or speaker for ICNGCI 2027 until they have agreed in writing.** This is the most common reputational failure for a new conference. Both pages carry a visible "carried forward, being reconfirmed" note — remove it once the roster is confirmed. |
+| **Speaker names** — 9 people | `speakers.html`, `index.html` | Still carried forward from the previous edition. **Nobody should be listed as a speaker until they have agreed in writing.** The page carries a visible "carried forward, being reconfirmed" note — remove it once confirmed. The **committee is now your own confirmed list** and needs no such warning. |
 | **Springer partnership** | `index.html`, `about.html#publication`, `call-for-papers.html`, `contact.html` FAQ | The site now says only that **Springer is the publication partner** — no series name, no indexing promise. Announce the series and any indexing on the About page once they are confirmed in writing. The Springer logo appears in the top bar, hero, home page and About page; remove it if the arrangement falls through. |
 | **Registration fee amounts** | `registration.html` **and** the `FEES` object in `assets/js/site.js` | Modelled on the previous edition's fees. Must be approved by your organising committee. **Change both places** or the calculator will contradict the printed table. |
 | **Conference dates — 17–19 June 2027** | 30+ places; `CONFIG` in `assets/js/site.js`; `data-countdown` in `index.html` | You said "June 2027"; the exact days are my choice. All other deadlines are derived from them (see section 3). |
@@ -32,8 +32,8 @@ For reference, so you don't re-check these:
 - **Nearby places** — Delhi, Vrindavan, Mathura, Kurukshetra, Haridwar, Rishikesh, with the distances as published.
 - **About Sharda** — UGC approved, NAAC A+, NIRF 2023 rank 87, 63-acre campus, only multi-discipline campus in the NCR.
 - **Contacts** — Dr. Subrata Sahana (subrata.sahana@sharda.ac.in, +91 93130 56608) and Prof. Sanjoy Das (sdas.jnu@gmail.com, +91 87875 38340).
-- **TPC roster** — all 260 members with affiliations, in a searchable table.
-- **Portraits** — 55 photographs, cropped square and optimised (15.6 MB → 1.6 MB).
+- **Portraits** — 41 photographs, cropped square and optimised.
+- **Track record** — five Springer and four IEEE published proceedings, with links, on `about.html#track-record`.
 - **Logos** — Sharda University (with and without the NAAC badge) and Springer. Both appear in the top bar; Springer also in the publication panels; Sharda also in the footer and the About/Venue sidebars.
 - **Hero image** — an aerial photograph of the Sharda campus, under a deep angled overlay so the type stays clean.
 - **Springer templates** — the four official author files in `assets/downloads/`, named generically (`Springer-Word-Template.zip`, `Springer-LaTeX-Template.zip`) since the series is not fixed.
@@ -81,12 +81,43 @@ text. **Change both** — the badge, the ordering and the calendar file come fro
 
 ---
 
-## 4. Profile links — 65 in place, 33 are searches
+## 4. Committee — what is filled and what is not
 
-Every academic on the committee and speaker pages links out:
+The committee is **your confirmed list, and only that list**. 46 named people,
+plus **21 positions you left blank**, shown as *To be announced*:
 
-- **32 links are verified and direct** — labelled *Research profile* (Google Scholar: Ramjee Prasad, Yogesh Singh Chauhan, Subrata Sahana, Seyed Ehtesham Hasnain) or *Faculty profile* (28 confirmed `sharda.ac.in/faculty/details/…` pages).
-- **33 links are Google Scholar author searches** — labelled *Scholar search* and styled in grey. They run a name search rather than pointing at a confirmed profile. Replace them with real URLs as you collect them.
+| Position | Slots |
+|---|---|
+| Honorary Chairs | 3 (1 national, 2 international) |
+| International Advisory Committee | 7 |
+| National Advisory Committee | 7 |
+| International Technical Program Chairs | 4 |
+
+The **Technical Program Committee / reviewer panel** is presented as "being
+formed", with a call for reviewers — the previous edition's 260-name roster has
+been removed entirely.
+
+Two entries need a decision:
+
+- **"Kamiya"** in your Technical Program Chairs — rendered as **Kamiya Khatter, Springer**, since that is the only Kamiya in this conference's history. Correct it if that is wrong.
+- **Dr. Avinash Kumar** (Track 5 chair) vs **Dr. Avinash Kumar Sharma** (Publicity Chair) — I treated them as two people, since you listed both. If they are the same person, merge them.
+
+### Profile links and photographs
+
+- **28 links are verified** `sharda.ac.in/faculty/details/…` faculty pages.
+- **13 are Google Scholar author searches** — labelled *Scholar search*, styled grey. Replace with real URLs as you collect them.
+- **36 of the 46 named people have photographs**, pulled from the Sharda faculty directory.
+
+**Ten named people have no photograph** and show initials: Dr. Nikhil Sharma
+(has one), Dr. K. Meena, Dr. Amit Sharma, Dr. Renu Mishra, Dr. K. Lakshmi,
+Mr. Ashish Kumar, Dr. Gauri Shankar, Dr. Y. Suchiatra, Dr. Saptdeepa Kalita,
+Dr. Sushant Jingram, Dr. Avinash Kumar — none are in the public Sharda faculty
+directory under those names. Drop a square JPEG into
+`assets/img/people/<name>.jpg` and swap the `person__avatar` div for an
+`<img class="person__photo">`.
+
+Two directory matches were **rejected as wrong**: "K. Lakshmi" only matches a
+*S.* Lakshmi, and "Mr. Ashish Kumar" only matches a *Dr.* Ashish Kumar Chalana.
 
 To upgrade one, find its entry in `committee.html` or `speakers.html`:
 
@@ -107,12 +138,7 @@ Springer editor, the four US-based industry speakers — deliberately have **no
 link**, since a research profile is not meaningful for them. Add LinkedIn URLs
 if you want them linked.
 
-**Nineteen entries have no photograph** and show initials instead — the
-international and national advisory committees (whose photos the previous
-edition never published), plus Ravi Prakash Chaturvedi, Syed Arshad Ali, Samta
-Rani and Nikhil Sharma, who are not in the public Sharda faculty directory. Drop a square JPEG into
-`assets/img/people/<name>.jpg` and swap the `person__avatar` div for an `<img
-class="person__photo">`.
+
 
 ---
 
