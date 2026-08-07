@@ -410,7 +410,7 @@
         });
       });
 
-      /* Deep-link support: #tab-advisory selects that tab */
+      /* Deep-link support: #tab-organizing selects that tab */
       var hash = location.hash.replace("#", "");
       var target = hash && buttons.filter(function (b) {
         return b.getAttribute("aria-controls") === hash || b.id === "tab-" + hash;

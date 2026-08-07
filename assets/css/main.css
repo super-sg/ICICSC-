@@ -153,6 +153,9 @@ strong, b { color: var(--ink); font-weight: 700; }
 .wrap--narrow { max-width: var(--wrap-narrow); }
 
 .section { padding-block: var(--sp-9); }
+/* Two sections on the same background stack their padding into one long blank
+   band. Drop the second one's top padding so the seam matches every other. */
+.section:not([class*="--"]) + .section:not([class*="--"]) { padding-top: 0; }
 .section--tight { padding-block: clamp(2.5rem, 5vw, 4rem); }
 .section--gray { background: var(--surface-2); }
 .section--ink { background: var(--inverse); color: #d6d6d6; }
@@ -1327,6 +1330,8 @@ select.field { cursor: pointer; }
 }
 .aside-card h3 { font-size: 1.0625rem; margin-bottom: var(--sp-3); }
 .aside-card > :last-child { margin-bottom: 0; }
+/* No trailing gap under the last card in a sidebar. */
+.aside-card:last-child { margin-bottom: 0; }
 .aside-card ul { padding-left: 1.05rem; font-size: 0.9375rem; }
 .aside-sticky { position: sticky; top: calc(var(--masthead-h) + 1.5rem); }
 @media (max-width: 880px) { .aside-sticky { position: static; } }

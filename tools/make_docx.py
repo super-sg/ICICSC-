@@ -403,8 +403,7 @@ if pol:
 h1("7. Conference Committee")
 csrc = read("committee.html")
 panels = {
-    "patrons": "Patrons and Chairs",
-    "advisory": "Advisory Committee",
+    "patrons": "Patrons, Chairs and Advisory Committee",
     "tpc": "Technical Program Committee",
     "organizing": "Organizing Committee",
 }
@@ -419,7 +418,7 @@ for pid, ptitle in panels.items():
     if pid == "organizing":
         panel = panel.split('<div class="note"')[0]
     h2(ptitle)
-    for gm in re.finditer(r"(?s)<div data-people-group>(.*?)</div>\n      </div>", panel):
+    for gm in re.finditer(r"(?s)<div data-people-group[^>]*>(.*?)</div>\n      </div>", panel):
         g = gm.group(1)
         gh = re.search(r"(?s)<h3[^>]*>(.*?)</h3>", g)
         if gh:
