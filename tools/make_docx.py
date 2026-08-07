@@ -407,25 +407,50 @@ panels = {
     "tpc": "Technical Program Committee",
     "organizing": "Organizing Committee",
 }
+def div_inner(html, start):
+    """Inner HTML of the <div ...> whose tag begins at `start`.
+
+    Counts nesting depth rather than relying on how the source is indented,
+    so reformatting committee.html cannot silently empty these tables.
+    """
+    i = html.index(">", start) + 1
+    depth = 1
+    for m in re.finditer(r"<(/?)div\b", html[i:]):
+        depth += -1 if m.group(1) else 1
+        if depth == 0:
+            return html[i:i + m.start()]
+    return html[i:]
+
+
+# Groups where person__role carries the member's country rather than a title
+# (these come from the nomination form, which lists country, not designation).
+COUNTRY_GROUPS = {
+    "Honorary Chairs",
+    "International Advisory Committee",
+    "National Advisory Committee",
+    "Technical Program Committee members",
+}
+
 for pid, ptitle in panels.items():
     start = csrc.find('<div id="%s" role="tabpanel"' % pid)
     if start == -1:
         continue
-    nxt = min([i for i in
-               (csrc.find('<div id="%s" role="tabpanel"' % o, start + 1) for o in panels)
-               if i > start] or [len(csrc)])
-    panel = csrc[start:nxt]
+    panel = div_inner(csrc, start)
     if pid == "organizing":
         panel = panel.split('<div class="note"')[0]
     h2(ptitle)
-    for gm in re.finditer(r"(?s)<div data-people-group[^>]*>(.*?)</div>\n      </div>", panel):
-        g = gm.group(1)
+    for gm in re.finditer(r"<div data-people-group", panel):
+        g = div_inner(panel, gm.start())
         gh = re.search(r"(?s)<h3[^>]*>(.*?)</h3>", g)
-        if gh:
-            h3(text_of(gh.group(1)))
+        title = text_of(gh.group(1)) if gh else ""
+        if title:
+            h3(title)
+        note = re.search(r'(?s)<p class="small muted">(.*?)</p>', g)
+        if note:
+            para(text_of(note.group(1)), size=9.5, color=GREY, space_after=4)
         rows = []
-        for pm in re.finditer(r'(?s)<div class="person">(.*?)</div>\s*</div>', g):
-            b = pm.group(1)
+        for pm in re.finditer(r'<div class="person"', g):
+            b = div_inner(g, pm.start())
             role = re.search(r'(?s)person__role">(.*?)</p>', b)
             name = re.search(r'(?s)person__name">(.*?)</p>', b)
             aff = re.search(r'(?s)person__affil">(.*?)</p>', b)
@@ -433,38 +458,18 @@ for pid, ptitle in panels.items():
                 rows.append([text_of(name.group(1)),
                              text_of(role.group(1)) if role else "",
                              text_of(aff.group(1)) if aff else ""])
-        table(["Name", "Role", "Affiliation"], rows, widths=[1.9, 1.4, 3.3])
-    # track chairs / free-standing person cards outside groups
-    if pid == "tpc":
-        h3("Track chairs")
-        rows = []
-        for pm in re.finditer(r'(?s)<div class="person">(.*?)</div>\s*</div>', panel):
-            b = pm.group(1)
-            role = re.search(r'(?s)person__role">(.*?)</p>', b)
-            name = re.search(r'(?s)person__name">(.*?)</p>', b)
-            aff = re.search(r'(?s)person__affil">(.*?)</p>', b)
-            if name:
-                rows.append([text_of(name.group(1)),
-                             text_of(role.group(1)) if role else "",
-                             text_of(aff.group(1)) if aff else ""])
-        table(["Name", "Role", "Track / department"], rows, widths=[1.9, 1.3, 3.4])
-        h3("Technical Program Committee members")
-        tpc_rows = []
-        tm = re.search(r'(?s)<h3[^>]*>Technical Program Committee members</h3>.*?<tbody>(.*?)</tbody>', panel)
-        if tm:
-            for rm in re.finditer(r"(?s)<tr>(.*?)</tr>", tm.group(1)):
-                cells = [text_of(c) for c in re.findall(r"(?s)<td[^>]*>(.*?)</td>", rm.group(1))]
-                if len(cells) == 2:
-                    tpc_rows.append(cells)
-        para("%d reviewers." % len(tpc_rows), size=9.5, color=GREY, space_after=4)
-        table(["Name", "Affiliation"], tpc_rows, widths=[2.4, 4.2])
+        col2 = "Country" if title in COUNTRY_GROUPS else "Role"
+        table(["Name", col2, "Affiliation"], rows, widths=[1.9, 1.4, 3.3])
 
 # ==========================================================================
 # 8. SPEAKERS
 # ==========================================================================
 h1("8. Speakers")
-para("The line-up carries forward from the previous conference hosted at Sharda "
-     "University and is being reconfirmed for ICNGCI 2027. Talk titles are indicative.",
+para("The Chief Guest and the first three keynote speakers carry forward from the "
+     "previous conference hosted at Sharda University and are still being reconfirmed "
+     "for ICNGCI 2027; their talk titles are indicative. The keynote speakers that "
+     "follow were confirmed directly for ICNGCI 2027 through the conference's own "
+     "nomination process.",
      color=GREY, space_after=10)
 ssrc = read("speakers.html")
 for sec in re.finditer(r'(?s)<div><span class="eyebrow">([^<]*)</span><h2>([^<]*)</h2></div>(.*?)(?=<div class="section-head"|</section>)', ssrc):
