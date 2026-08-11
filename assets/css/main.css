@@ -1890,3 +1890,6 @@ textarea.field { min-height: 140px; resize: vertical; }
   overflow: hidden;
   width: 100%;
 }
+
+.split--wide-aside { grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); }
+@media (max-width: 880px) { .split--wide-aside { grid-template-columns: minmax(0, 1fr); } }
