@@ -25,10 +25,10 @@ Authors who prefer Overleaf can start from Springer's
 
 | Filename | What it is | Linked from |
 |---|---|---|
-| `ICNGCI-2027-Call-for-Papers.pdf` | One- or two-page CFP flyer: dates, tracks, submission link, contacts. The most-shared file of any conference — **add this first.** | Top bar and footer of every page |
-| `ICNGCI-2027-Brochure.pdf` | Longer brochure: about, committee, tracks, fees, venue | Footer, programme |
-| `ICNGCI-2027-Programme.pdf` | Detailed programme — publish 12 June 2027 | Programme page |
-| `ICNGCI-2027-Slide-Template.pptx` | Optional branded slide template for presenters | Programme page |
+| `ICNGCI-2026-Call-for-Papers.pdf` | One- or two-page CFP flyer: dates, tracks, submission link, contacts. The most-shared file of any conference — **add this first.** | Top bar and footer of every page |
+| `ICNGCI-2026-Brochure.pdf` | Longer brochure: about, committee, tracks, fees, venue | Footer, programme |
+| `ICNGCI-2026-Programme.pdf` | Detailed programme — publish 10 December 2026 | Programme page |
+| `ICNGCI-2026-Slide-Template.pptx` | Optional branded slide template for presenters | Programme page |
 
 Until they exist those four links return 404; nothing else breaks.
 

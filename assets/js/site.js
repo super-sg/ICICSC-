@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ICNGCI 2027 — site behaviour
+   ICNGCI 2026 — site behaviour
    Vanilla JS, no dependencies, no build step.
    Every module is defensive: if its markup is not on the page, it no-ops.
    --------------------------------------------------------------------------
@@ -14,12 +14,12 @@
      ---------------------------------------------------------------------- */
   var CONFIG = {
     name: "International Conference on Next-Generation Computing and Innovations",
-    acronym: "ICNGCI 2027",
+    acronym: "ICNGCI 2026",
     // ISO dates (YYYY-MM-DD). Local midnight is assumed.
-    startDate: "2027-06-17",
-    endDate: "2027-06-19",
+    startDate: "2026-12-18",
+    endDate: "2026-12-19",
     venue: "Sharda University, Greater Noida, India", // TODO: replace
-    url: "https://icngci2027.sharda.ac.in/" // TODO: replace
+    url: "https://icngci2026.sharda.ac.in/" // TODO: replace
   };
 
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
@@ -176,7 +176,7 @@
 
   /* ----------------------------------------------------------------------
      3. Deadline status + "Add to calendar" (.ics)
-        Markup: <li data-date="2027-04-15" data-title="Paper submission">
+        Markup: <li data-date="2026-10-01" data-title="Paper submission">
      ---------------------------------------------------------------------- */
   function icsEscape(str) {
     return String(str).replace(/\\/g, "\\\\").replace(/;/g, "\\;")
@@ -195,7 +195,7 @@
     var lines = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//ICNGCI 2027//Conference Website//EN",
+      "PRODID:-//ICNGCI 2026//Conference Website//EN",
       "CALSCALE:GREGORIAN",
       "METHOD:PUBLISH",
       "BEGIN:VEVENT",
@@ -213,7 +213,7 @@
     var blob = new Blob([lines.join("\r\n")], { type: "text/calendar;charset=utf-8" });
     var a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = title.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-icngci-2027.ics";
+    a.download = title.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-icngci-2026.ics";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -281,7 +281,7 @@
 
   /* ----------------------------------------------------------------------
      3b. Headline deadline block — "N days left" / "Closed"
-         Markup: <span class="deadline__left" data-deadline="2027-04-15"></span>
+         Markup: <span class="deadline__left" data-deadline="2026-10-01"></span>
      ---------------------------------------------------------------------- */
   function initDeadlineBanner() {
     $$("[data-deadline]").forEach(function (el) {
@@ -633,7 +633,7 @@
           get("message")
         ].join("\n");
         var href = "mailto:" + to +
-          "?subject=" + encodeURIComponent("[ICNGCI 2027] " + (get("subject") || "Enquiry")) +
+          "?subject=" + encodeURIComponent("[ICNGCI 2026] " + (get("subject") || "Enquiry")) +
           "&body=" + encodeURIComponent(body);
         window.location.href = href;
         var status = $("#contact-status", form);

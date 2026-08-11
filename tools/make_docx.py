@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Builds ICNGCI-2027-Conference-Information.docx from the live site content.
+Builds ICNGCI-2026-Conference-Information.docx from the live site content.
 
 Content is extracted from the HTML pages rather than retyped, so the document
 and the website cannot drift apart. Re-run after editing the site.
@@ -16,7 +16,7 @@ from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "assets", "downloads", "ICNGCI-2027-Conference-Information.docx")
+OUT = os.path.join(ROOT, "assets", "downloads", "ICNGCI-2026-Conference-Information.docx")
 
 INK = RGBColor(0x0A, 0x0A, 0x0A)
 BLUE = RGBColor(0x00, 0x3B, 0xCE)
@@ -180,23 +180,23 @@ para("Sharda School of Computing Science & Engineering", size=9, bold=True,
 para("SHARDA UNIVERSITY, GREATER NOIDA", size=9, bold=True, color=GREY,
      align=WD_ALIGN_PARAGRAPH.CENTER, space_after=40)
 
-para("ICNGCI 2027", size=40, bold=True, color=INK,
+para("ICNGCI 2026", size=40, bold=True, color=INK,
      align=WD_ALIGN_PARAGRAPH.CENTER, space_after=6)
 para("International Conference on\nNext-Generation Computing and Innovations",
      size=16, bold=True, color=INK, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=16)
-para("17–19 June 2027", size=14, bold=True, color=RED,
+para("18–19 December 2026", size=14, bold=True, color=RED,
      align=WD_ALIGN_PARAGRAPH.CENTER, space_after=4)
 para("Sharda University, Knowledge Park III, Greater Noida, Uttar Pradesh 201310, India",
      size=10.5, color=GREY, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=30)
 
 para("Publication partner: Springer", size=11, bold=True, color=INK,
      align=WD_ALIGN_PARAGRAPH.CENTER, space_after=4)
-para("Submission portal: Microsoft CMT  ·  Paper deadline: 15 April 2027",
+para("Submission portal: Microsoft CMT  ·  Paper deadline: 1 October 2026",
      size=10, color=GREY, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=40)
 
 para("CONFERENCE INFORMATION DOCUMENT", size=8, bold=True, color=BLUE,
      align=WD_ALIGN_PARAGRAPH.CENTER, space_after=2)
-para("Complete content of the ICNGCI 2027 conference website.",
+para("Complete content of the ICNGCI 2026 conference website.",
      size=9.5, color=GREY, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=2)
 para("Generated from the site — re-run tools/make-docx.sh after editing pages.",
      size=8, color=GREY, italic=True, align=WD_ALIGN_PARAGRAPH.CENTER)
@@ -294,7 +294,7 @@ for m in re.finditer(r'(?s)<article class="track"[^>]*>(.*?)</article>', tsrc):
 # ==========================================================================
 h1("3. Call for Papers")
 para("FULL PAPER SUBMISSION DEADLINE", size=8, bold=True, color=BLUE, space_after=2)
-para("15 April 2027", size=22, bold=True, color=INK, space_after=2)
+para("1 October 2026", size=22, bold=True, color=INK, space_after=2)
 para("23:59 Anywhere on Earth · 8–10 pages, A4, Springer template · Microsoft CMT",
      size=9.5, color=GREY, space_after=12)
 
@@ -343,11 +343,16 @@ for cap, hd, tbl in tables_of(main_of("dates.html")):
 # 5. PAPER SUBMISSION
 # ==========================================================================
 h1("5. Paper Submission")
-frag = main_of("submission.html")
+frag = main_of("call-for-papers.html")
 frag = re.sub(r"(?s)<aside>.*?</aside>", "", frag)
+started = False
 for tag, txt in blocks(frag):
-    if txt in ("Downloads", "Key facts"):
+    if txt == "Manuscript Preparation":
+        started = True
+    if not started:
         continue
+    if txt in ("Downloads", "Key facts"):
+        break
     if tag == "h2":
         h2(txt)
     elif tag == "h3":
@@ -467,8 +472,8 @@ for pid, ptitle in panels.items():
 h1("8. Speakers")
 para("The Chief Guest and the first three keynote speakers carry forward from the "
      "previous conference hosted at Sharda University and are still being reconfirmed "
-     "for ICNGCI 2027; their talk titles are indicative. The keynote speakers that "
-     "follow were confirmed directly for ICNGCI 2027 through the conference's own "
+     "for ICNGCI 2026; their talk titles are indicative. The keynote speakers that "
+     "follow were confirmed directly for ICNGCI 2026 through the conference's own "
      "nomination process.",
      color=GREY, space_after=10)
 ssrc = read("speakers.html")
@@ -492,7 +497,7 @@ for sec in re.finditer(r'(?s)<div><span class="eyebrow">([^<]*)</span><h2>([^<]*
 # ==========================================================================
 h1("9. Programme")
 para("Provisional. The detailed programme, with paper titles, authors and session "
-     "chairs, is published on 12 June 2027.", color=GREY, space_after=10)
+     "chairs, is published on 10 December 2026.", color=GREY, space_after=10)
 psrc = read("program.html")
 for pm in re.finditer(r'(?s)<div id="day\d" role="tabpanel"[^>]*>(.*?)</div>\s*</div>', psrc):
     panel = pm.group(1)
@@ -589,7 +594,7 @@ for pm in re.finditer(r'(?s)<div class="person">(.*?)</div>\s*</div>', csrc):
 table(["Name", "Role", "Affiliation and contact"], rows, widths=[1.6, 1.5, 3.5])
 
 h2("Postal address")
-para("ICNGCI 2027 Secretariat, Sharda School of Computing Science & Engineering, "
+para("ICNGCI 2026 Secretariat, Sharda School of Computing Science & Engineering, "
      "Sharda University, Plot No. 32–34, Knowledge Park III, Greater Noida, "
      "Uttar Pradesh — 201310, India")
 

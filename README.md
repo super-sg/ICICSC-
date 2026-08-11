@@ -1,7 +1,7 @@
-# ICNGCI 2027 — conference website
+# ICNGCI 2026 — conference website
 
 Static website for the **International Conference on Next-Generation Computing
-and Innovations**, 17–19 June 2027, hosted by the Sharda School of Computing
+and Innovations**, 18–19 December 2026, hosted by the Sharda School of Computing
 Science & Engineering, **Sharda University, Greater Noida**.
 
 Plain HTML, CSS and vanilla JavaScript. **No build step, no framework, no
@@ -39,9 +39,8 @@ downloads and the map embed behave better over HTTP. Use the server.
 index.html              Home — hero, countdown, tracks, dates, fees, venue
 about.html              About, objectives, publication policy, host, awards, ethics
 tracks.html             All 6 tracks / 90 topics, searchable and filterable
-call-for-papers.html    CFP, submission categories, review process, special sessions
+call-for-papers.html    CFP, submission categories, manuscript prep, plagiarism policy
 dates.html              Full author timeline with live status + calendar downloads
-submission.html         Paper submission, author guidelines, manuscript prep, plagiarism
 registration.html       Fee tables, fee calculator, payment details, policies, FAQ
 committee.html          Patrons, advisory, TPC + call for reviewers, organizing
 speakers.html           Keynotes, industry and invited talks, speaker proposals
@@ -71,9 +70,9 @@ The current dates are spaced to match the previous edition hosted on this campus
 
 1. **`assets/js/site.js`** — the `CONFIG` block at the very top. This drives the
    countdown and every "Add to calendar" file.
-2. **The visible text** — search and replace `17–19 June 2027` across the
+2. **The visible text** — search and replace `18–19 December 2026` across the
    `.html` files (note the en dash `–`, not a hyphen).
-3. **`index.html`** — the `data-countdown="2027-06-17"` attribute on the
+3. **`index.html`** — the `data-countdown="2026-12-18"` attribute on the
    countdown list.
 
 ### Change a deadline
@@ -82,16 +81,16 @@ Edit the `<li>` in `dates.html` (and the shortened list on `index.html`). Each
 one looks like:
 
 ```html
-<li data-date="2027-02-15" data-title="Full paper submission deadline">
+<li data-date="2026-09-15" data-title="Full paper submission deadline">
   <span class="dates__label">Full paper submission deadline</span>
-  <span class="dates__meta"><span class="dates__when">15 February 2027</span></span>
+  <span class="dates__meta"><span class="dates__when">15 September 2026</span></span>
 </li>
 ```
 
 `data-date` is what the code reads — it computes the *Closed / Today / N days
 left / Upcoming* badge automatically and generates the calendar file. The text
 inside `dates__when` is what humans see. **Keep the two in sync.** Add
-`data-end="2027-06-19"` for a multi-day event.
+`data-end="2026-12-19"` for a multi-day event.
 
 ### Change registration fees
 
@@ -216,7 +215,7 @@ will — correctly — be distrusted.
 
 ## The Word document
 
-`assets/downloads/ICNGCI-2027-Conference-Information.docx` holds the complete
+`assets/downloads/ICNGCI-2026-Conference-Information.docx` holds the complete
 content of the site — about, all 6 tracks and 90 topics, call for papers,
 important dates, submission guidelines, fee tables, the full committee
 including the 260-member TPC roster, speakers, programme, venue and contacts.

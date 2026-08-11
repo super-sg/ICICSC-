@@ -17,8 +17,8 @@ live wrong.
 | **Speaker names** — 9 people | `speakers.html`, `index.html` | Still carried forward from the previous edition. **Nobody should be listed as a speaker until they have agreed in writing.** The page carries a visible "carried forward, being reconfirmed" note — remove it once confirmed. The **committee is now your own confirmed list** and needs no such warning. |
 | **Springer partnership** | `index.html`, `about.html#publication`, `call-for-papers.html`, `contact.html` FAQ | The site now says only that **Springer is the publication partner** — no series name, no indexing promise. Announce the series and any indexing on the About page once they are confirmed in writing. The Springer logo appears in the top bar, hero, home page and About page; remove it if the arrangement falls through. |
 | **Registration fee amounts** | `registration.html` **and** the `FEES` object in `assets/js/site.js` | Modelled on the previous edition's fees. Must be approved by your organising committee. **Change both places** or the calculator will contradict the printed table. |
-| **Conference dates — 17–19 June 2027** | 30+ places; `CONFIG` in `assets/js/site.js`; `data-countdown` in `index.html` | You said "June 2027"; the exact days are my choice. All other deadlines are derived from them (see section 3). |
-| **CMT conference URL** | every page (top bar) + `submission.html` | Currently `cmt3.research.microsoft.com/ICNGCI2027/`, which does not exist yet. Create the conference in CMT and confirm the URL. |
+| **Conference dates — 18–19 December 2026** | 30+ places; `CONFIG` in `assets/js/site.js`; `data-countdown` in `index.html` | You moved the conference from 17–19 June 2027 to 18–19 December 2026. All other deadlines are derived from them (see section 3). |
+| **CMT conference URL** | every page (top bar) + `call-for-papers.html` | Currently `cmt3.research.microsoft.com/ICNGCI2026/`, which does not exist yet. Create the conference in CMT and confirm the URL. |
 | **Registration form URL** | `registration.html`, two "Open the registration form" buttons, currently `href="#"` | Dead links on the page people pay from. |
 
 ---
@@ -50,30 +50,31 @@ co-hosting.
 
 ---
 
-## 3. Dates — spaced to match the previous edition
+## 3. Dates — compressed to fit the new December 2026 conference
 
-The previous conference ran 1–3 July 2026 with submission 61 days before,
-notification 42 days before, and registration/camera-ready 16 days before. The
-same intervals, applied to a 17 June 2027 start:
+The conference moved from 17–19 June 2027 to 18–19 December 2026, which leaves
+only about four months from today. The full timeline below was built from
+scratch to fit that window — it is my choice, not carried over from a previous
+edition, and your organising committee should sanity-check it:
 
-| Deadline | Date | Days before |
+| Deadline | Date | Days before conference |
 |---|---|---|
-| Submission portal opens | 1 December 2026 | 198 |
-| Special session &amp; tutorial proposals | 15 February 2027 | 122 |
-| **Full paper submission** | **15 April 2027** | **63** |
-| Notification of acceptance | 5 May 2027 | 43 |
-| Early-bird registration | 20 May 2027 | 28 |
-| Registration &amp; camera-ready | 1 June 2027 | 16 |
-| Doctoral symposium &amp; posters | 5 June 2027 | 12 |
-| Slides &amp; pre-recorded video | 10 June 2027 | 7 |
-| Detailed programme published | 12 June 2027 | 5 |
-| Pre-conference tutorials | 16 June 2027 | 1 |
-| **Conference** | **17–19 June 2027** | — |
+| Submission portal opens | 15 August 2026 | 125 |
+| Special session &amp; tutorial proposals | 15 September 2026 | 94 |
+| **Full paper submission** | **1 October 2026** | **78** |
+| Notification of acceptance | 25 October 2026 | 54 |
+| Early-bird registration | 10 November 2026 | 38 |
+| Registration &amp; camera-ready | 20 November 2026 | 28 |
+| Doctoral symposium &amp; posters | 25 November 2026 | 23 |
+| Slides &amp; pre-recorded video | 5 December 2026 | 13 |
+| Detailed programme published | 10 December 2026 | 8 |
+| Pre-conference tutorials | 17 December 2026 | 1 |
+| **Conference** | **18–19 December 2026** | — |
 
-This is a compressed, regional-conference rhythm — nine weeks from submission to
-conference. It is what the previous edition used, so it is presumably workable
-for your committee, but **it leaves only three weeks for review**. If you want a
-longer review window, move the paper deadline earlier; nothing else needs to move.
+This is a tight, compressed rhythm — about 47 days from submission portal
+opening to the paper deadline, and just over three weeks for review
+(submission to notification). If you want a longer review window, move the
+paper deadline earlier; nothing else needs to move.
 
 Each `<li>` in `dates.html` carries both a machine-readable `data-date` and human
 text. **Change both** — the badge, the ordering and the calendar file come from
@@ -176,7 +177,7 @@ Drafted to current good practice, but they are commitments — read them and mak
 sure you will honour them.
 
 - Double-blind review, minimum three reviewers per paper (`call-for-papers.html`)
-- Similarity thresholds: 15% overall, 5% single source (`submission.html`)
+- Similarity thresholds: 15% overall, 5% single source (`call-for-papers.html`)
 - Generative-AI disclosure policy (`about.html#ethics`)
 - Cancellation and refund terms (`registration.html`)
 - Accessibility commitments — live captioning, sign-language interpretation on four weeks' notice, quiet room (`venue.html#access`). **Only keep what you can actually deliver.**

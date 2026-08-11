@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Regenerates assets/downloads/ICNGCI-2027-Conference-Information.docx from the
+# Regenerates assets/downloads/ICNGCI-2026-Conference-Information.docx from the
 # site's HTML pages, so the Word document and the website cannot drift apart.
 #
 #   ./tools/make-docx.sh
