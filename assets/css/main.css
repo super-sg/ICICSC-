@@ -169,7 +169,8 @@ strong, b { color: var(--ink); font-weight: 700; }
 
 .grid { display: grid; gap: var(--sp-5); }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
-.grid--strict-2 { grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr)); }
+.grid--strict-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 768px) { .grid--strict-2 { grid-template-columns: 1fr; } }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(min(275px, 100%), 1fr)); }
 .grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(215px, 100%), 1fr)); }
 
