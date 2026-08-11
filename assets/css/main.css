@@ -223,6 +223,12 @@ strong, b { color: var(--ink); font-weight: 700; }
   max-width: 62ch;
 }
 
+.about-content h2,
+.about-content p,
+.about-content .lede {
+  max-width: none !important;
+}
+
 .small { font-size: 0.875rem; }
 .muted { color: var(--muted); }
 
