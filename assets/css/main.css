@@ -1891,5 +1891,5 @@ textarea.field { min-height: 140px; resize: vertical; }
   width: 100%;
 }
 
-.split--wide-aside { grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); }
+.split--wide-aside { grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); }
 @media (max-width: 880px) { .split--wide-aside { grid-template-columns: minmax(0, 1fr); } }
