@@ -458,10 +458,10 @@
       IN: {
         currency: "INR", symbol: "₹",
         categories: {
-          attendee: { label: "Attendee / Listener", amount: 3500 },
-          student: { label: "Research Scholar / Student", amount: 7500 },
-          academic: { label: "Academician / Faculty", amount: 8500 },
-          industry: { label: "Industry / Corporate", amount: 12000 }
+          attendee: { label: "Attendee / Listener", amount: 2500 },
+          student: { label: "Research Scholar / Student", amount: 6500 },
+          academic: { label: "Academician / Faculty", amount: 7500 },
+          industry: { label: "Industry / Corporate", amount: 8000 }
         },
         extraPage: 1000,
         extraPaper: 6000,
@@ -470,10 +470,10 @@
       FOREIGN: {
         currency: "USD", symbol: "$",
         categories: {
-          attendee: { label: "Attendee / Listener", amount: 125 },
-          student: { label: "Research Scholar / Student", amount: 350 },
-          academic: { label: "Academician / Faculty", amount: 350 },
-          industry: { label: "Industry / Corporate", amount: 500 }
+          attendee: { label: "Attendee / Listener", amount: 50 },
+          student: { label: "Research Scholar / Student", amount: 100 },
+          academic: { label: "Academician / Faculty", amount: 125 },
+          industry: { label: "Industry / Corporate", amount: 125 }
         },
         extraPage: 25,
         extraPaper: 250,
