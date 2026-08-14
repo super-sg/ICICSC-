@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ICNGCI 2026 — site behaviour
+   ICNGCI 2027 — site behaviour
    Vanilla JS, no dependencies, no build step.
    Every module is defensive: if its markup is not on the page, it no-ops.
    --------------------------------------------------------------------------
@@ -14,12 +14,12 @@
      ---------------------------------------------------------------------- */
   var CONFIG = {
     name: "International Conference on Next-Generation Computing and Innovations",
-    acronym: "ICNGCI 2026",
+    acronym: "ICNGCI 2027",
     // ISO dates (YYYY-MM-DD). Local midnight is assumed.
-    startDate: "2026-12-18",
-    endDate: "2026-12-19",
+    startDate: "2027-02-19",
+    endDate: "2027-02-20",
     venue: "Sharda University, Greater Noida, India", // TODO: replace
-    url: "https://icngci2026.sharda.ac.in/" // TODO: replace
+    url: "https://icngci2027.sharda.ac.in/" // TODO: replace
   };
 
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
@@ -195,7 +195,7 @@
     var lines = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//ICNGCI 2026//Conference Website//EN",
+      "PRODID:-//ICNGCI 2027//Conference Website//EN",
       "CALSCALE:GREGORIAN",
       "METHOD:PUBLISH",
       "BEGIN:VEVENT",
@@ -213,7 +213,7 @@
     var blob = new Blob([lines.join("\r\n")], { type: "text/calendar;charset=utf-8" });
     var a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = title.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-icngci-2026.ics";
+    a.download = title.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-icngci-2027.ics";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -633,7 +633,7 @@
           get("message")
         ].join("\n");
         var href = "mailto:" + to +
-          "?subject=" + encodeURIComponent("[ICNGCI 2026] " + (get("subject") || "Enquiry")) +
+          "?subject=" + encodeURIComponent("[ICNGCI 2027] " + (get("subject") || "Enquiry")) +
           "&body=" + encodeURIComponent(body);
         window.location.href = href;
         var status = $("#contact-status", form);
@@ -645,6 +645,21 @@
         }
       });
     }
+  }
+
+  /* ----------------------------------------------------------------------
+     Carousel Click Navigation to Committee Page
+     ---------------------------------------------------------------------- */
+  function initCarouselLinks() {
+    var carousels = $$(".committee-showcase");
+    carousels.forEach(function (sec) {
+      on(sec, "click", function (e) {
+        var card = e.target.closest(".story-card, .carousel-mini-head");
+        if (card) {
+          window.location.href = "committee.html";
+        }
+      });
+    });
   }
 
   /* ----------------------------------------------------------------------
@@ -662,6 +677,7 @@
     initCopy();
     initToTop();
     initConferenceIcs();
+    initCarouselLinks();
     initMisc();
   }
 

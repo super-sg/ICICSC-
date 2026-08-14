@@ -18,7 +18,7 @@ live wrong.
 | **Springer partnership** | `index.html`, `about.html#publication`, `call-for-papers.html`, `contact.html` FAQ | The site now says only that **Springer is the publication partner** — no series name, no indexing promise. Announce the series and any indexing on the About page once they are confirmed in writing. The Springer logo appears in the top bar, hero, home page and About page; remove it if the arrangement falls through. |
 | **Registration fee amounts** | `registration.html` **and** the `FEES` object in `assets/js/site.js` | Modelled on the previous edition's fees. Must be approved by your organising committee. **Change both places** or the calculator will contradict the printed table. |
 | **Conference dates — 18–19 December 2026** | 30+ places; `CONFIG` in `assets/js/site.js`; `data-countdown` in `index.html` | You moved the conference from 17–19 June 2027 to 18–19 December 2026. All other deadlines are derived from them (see section 3). |
-| **CMT conference URL** | every page (top bar) + `call-for-papers.html` | Currently `cmt3.research.microsoft.com/ICNGCI2026/`, which does not exist yet. Create the conference in CMT and confirm the URL. |
+| **CMT conference URL** | every page (top bar) + `call-for-papers.html` | Currently `cmt3.research.microsoft.com/ICNGCI2027/`, which does not exist yet. Create the conference in CMT and confirm the URL. |
 | **Registration form URL** | `registration.html`, two "Open the registration form" buttons, currently `href="#"` | Dead links on the page people pay from. |
 
 ---

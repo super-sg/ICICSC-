@@ -1,4 +1,4 @@
-# ICNGCI 2026 — conference website
+# ICNGCI 2027 — conference website
 
 Static website for the **International Conference on Next-Generation Computing
 and Innovations**, 18–19 December 2026, hosted by the Sharda School of Computing
@@ -215,7 +215,7 @@ will — correctly — be distrusted.
 
 ## The Word document
 
-`assets/downloads/ICNGCI-2026-Conference-Information.docx` holds the complete
+`assets/downloads/ICNGCI-2027-Conference-Information.docx` holds the complete
 content of the site — about, all 6 tracks and 90 topics, call for papers,
 important dates, submission guidelines, fee tables, the full committee
 including the 260-member TPC roster, speakers, programme, venue and contacts.
