@@ -172,7 +172,7 @@ strong, b { color: var(--ink); font-weight: 700; }
 .grid--strict-2 { grid-template-columns: repeat(2, 1fr); }
 @media (max-width: 768px) { .grid--strict-2 { grid-template-columns: 1fr; } }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(min(275px, 100%), 1fr)); }
-.grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(215px, 100%), 1fr)); }
+.grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(185px, 100%), 1fr)); }
 
 .split {
   display: grid;
@@ -1049,50 +1049,76 @@ body.nav-locked { overflow: hidden; }
 /* Portraits are prepared as squares. A 4:3 box trims only the lower quarter,
    and the 20% vertical anchor keeps the head clear of the top edge — a 2:1
    banner crop, by contrast, decapitates every portrait. */
+.person--feature {
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  border-top: 3px solid var(--blue);
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.person--feature:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
 .person--feature .person__photo {
   width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
+  height: 160px;
+  aspect-ratio: auto;
+  object-fit: cover;
   object-position: center 20%;
   border: 0;
   border-bottom: 1px solid var(--line);
-}
-/* Keep feature cards to a readable width when a row holds only two of them */
-.speaker-row {
-  grid-template-columns: repeat(auto-fit, minmax(min(275px, 100%), 1fr));
-  max-width: 860px;
+  display: block;
 }
 
-/* Outbound profile link under a name */
-.person__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.28rem;
-  margin-top: 0.4rem;
-  font-size: 0.75rem;
+.person--feature .person__avatar {
+  width: 100%;
+  height: 160px;
+  font-size: 2rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.person--feature .person__body {
+  padding: 0.65rem 0.8rem 0.8rem;
+}
+
+.person--feature .person__role {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.15rem;
+}
+
+.person--feature .person__name {
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--blue);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
+  line-height: 1.25;
+  margin-bottom: 0.2rem;
 }
-.person__link::after { content: "↗"; font-size: 0.95em; }
-.person__link:hover { color: var(--red); border-bottom-color: var(--red); }
-.person__link--search { color: var(--muted); font-weight: 500; }
-.person__link--search:hover { color: var(--blue); border-bottom-color: var(--blue); }
 
-.person--feature { flex-direction: column; gap: var(--sp-2); padding: 0; border-top: 4px solid var(--blue); }
-.person--feature .person__avatar { width: 100%; height: 130px; font-size: 2rem; border: 0; border-bottom: 1px solid var(--line); }
-.person--feature .person__body { padding: var(--sp-3); }
-.person--feature .person__name { font-size: 0.9rem; }
-.person--feature .person__role { font-size: 0.65rem; }
-.person--feature .person__affil { font-size: 0.78rem; }
+.person--feature .person__affil {
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.person--feature .person__link {
+  font-size: 0.7rem;
+  margin-top: 0.35rem;
+}
+
 .person--feature .person__talk {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--ink-2);
   border-left: 3px solid var(--line-strong);
-  padding-left: 0.75rem;
-  margin-top: var(--sp-3);
+  padding-left: 0.65rem;
+  margin-top: 0.5rem;
   margin-bottom: 0;
 }
 
