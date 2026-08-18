@@ -1015,6 +1015,11 @@ body.nav-locked { overflow: hidden; }
   border: 1px solid var(--line);
   align-items: flex-start;
 }
+.grid > .person:only-child {
+  width: fit-content;
+  max-width: 540px;
+  justify-self: start;
+}
 .person__avatar {
   flex-shrink: 0;
   width: 58px;
