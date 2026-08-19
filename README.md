@@ -38,7 +38,7 @@ downloads and the map embed behave better over HTTP. Use the server.
 ```
 index.html              Home — hero, countdown, tracks, dates, fees, venue
 about.html              About, objectives, publication policy, host, awards, ethics
-tracks.html             All 6 tracks / 90 topics, searchable and filterable
+tracks.html             All 6 tracks / 66 topics, searchable and filterable
 call-for-papers.html    CFP, submission categories, manuscript prep, plagiarism policy
 dates.html              Full author timeline with live status + calendar downloads
 registration.html       Fee tables, fee calculator, payment details, policies, FAQ
