@@ -112,6 +112,15 @@
        stays byte-identical on every page. */
     var here = location.pathname.split("/").pop() || "index.html";
     $$(".mainnav a[href]").forEach(function (a) {
+      on(a, "click", function () {
+        closeNav();
+        $$(".has-sub.is-open").forEach(function (li) {
+          li.classList.remove("is-open");
+          var b = $(".mainnav__link", li);
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      });
+
       var target = a.getAttribute("href").split("#")[0].split("/").pop();
       if (!target || target !== here) return;
       a.classList.add("is-active");
@@ -410,10 +419,30 @@
         });
       });
 
-      /* Deep-link support: #tab-organizing selects that tab */
+      function applyHash(scroll) {
+        var hash = location.hash.replace("#", "");
+        if (!hash) return;
+        var target = buttons.filter(function (b) {
+          return b.getAttribute("aria-controls") === hash || b.id === "tab-" + hash || b.id === hash;
+        })[0];
+        if (target) {
+          select(target, false);
+          if (scroll) {
+            var el = document.getElementById(target.getAttribute("aria-controls")) || group;
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      }
+
+      /* Listen to hash change (e.g. clicking committee dropdown items while already on committee.html) */
+      window.addEventListener("hashchange", function () {
+        applyHash(true);
+      });
+
+      /* Deep-link support on initial page load: #tab-organizing or #organizing selects that tab */
       var hash = location.hash.replace("#", "");
       var target = hash && buttons.filter(function (b) {
-        return b.getAttribute("aria-controls") === hash || b.id === "tab-" + hash;
+        return b.getAttribute("aria-controls") === hash || b.id === "tab-" + hash || b.id === hash;
       })[0];
       select(target || buttons[0], false);
     });
