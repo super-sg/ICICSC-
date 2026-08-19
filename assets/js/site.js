@@ -491,10 +491,7 @@
           student: { label: "Research Scholar / Student", amount: 6500 },
           academic: { label: "Academician / Faculty", amount: 7500 },
           industry: { label: "Industry / Corporate", amount: 8000 }
-        },
-        extraPage: 1000,
-        extraPaper: 6000,
-        banquet: 1500
+        }
       },
       FOREIGN: {
         currency: "USD", symbol: "$",
@@ -503,18 +500,12 @@
           student: { label: "Research Scholar / Student", amount: 100 },
           academic: { label: "Academician / Faculty", amount: 125 },
           industry: { label: "Industry / Corporate", amount: 125 }
-        },
-        extraPage: 25,
-        extraPaper: 250,
-        banquet: 40
+        }
       }
     };
 
     var region = $("#calc-region", form);
     var category = $("#calc-category", form);
-    var pages = $("#calc-pages", form);
-    var papers = $("#calc-papers", form);
-    var banquet = $("#calc-banquet", form);
     var total = $("#calc-total");
     var breakdown = $("#calc-breakdown");
 
@@ -524,37 +515,18 @@
 
     function update() {
       var table = FEES[region.value] || FEES.IN;
-      var cat = table.categories[category.value] || table.categories.attendee;
-      var extraPages = Math.max(0, parseInt(pages.value, 10) || 0);
-      var extraPapers = Math.max(0, (parseInt(papers.value, 10) || 1) - 1);
-      var parts = [];
+      var cat = table.categories[category.value] || table.categories.student;
       var sum = cat.amount;
-      parts.push(cat.label + ": " + fmt(table.symbol, cat.amount));
 
-      if (extraPages > 0) {
-        var pageCost = extraPages * table.extraPage;
-        sum += pageCost;
-        parts.push(extraPages + " extra page" + (extraPages === 1 ? "" : "s") +
-          ": " + fmt(table.symbol, pageCost));
-      }
-      if (extraPapers > 0) {
-        var paperCost = extraPapers * table.extraPaper;
-        sum += paperCost;
-        parts.push(extraPapers + " additional paper" + (extraPapers === 1 ? "" : "s") +
-          ": " + fmt(table.symbol, paperCost));
-      }
-      if (banquet && banquet.checked) {
-        sum += table.banquet;
-        parts.push("Accompanying person (banquet): " + fmt(table.symbol, table.banquet));
-      }
-
-      total.textContent = fmt(table.symbol, sum);
-      breakdown.textContent = parts.join(" · ") + " · Indicative only — GST/taxes as applicable.";
+      if (total) total.textContent = fmt(table.symbol, sum);
+      if (breakdown) breakdown.textContent = cat.label + " · Standard registration fee (indicative — taxes as applicable).";
     }
 
-    [region, category, pages, papers, banquet].forEach(function (el) {
-      on(el, "input", update);
-      on(el, "change", update);
+    [region, category].forEach(function (el) {
+      if (el) {
+        on(el, "input", update);
+        on(el, "change", update);
+      }
     });
     on(form, "submit", function (e) { e.preventDefault(); });
     update();

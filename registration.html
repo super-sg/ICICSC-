@@ -147,9 +147,6 @@
           <tr><td><strong>Research scholar / student</strong><br><span class="small muted">Valid institutional ID required</span></td><td class="num">₹6,000</td><td class="num">₹6,500</td><td class="num">US$80</td><td class="num">US$100</td><td>Yes</td></tr>
           <tr><td><strong>Academician / faculty</strong></td><td class="num">₹7,000</td><td class="num">₹7,500</td><td class="num">US$100</td><td class="num">US$125</td><td>Yes</td></tr>
           <tr><td><strong>Industry / corporate</strong></td><td class="num">₹7,500</td><td class="num">₹8,000</td><td class="num">US$100</td><td class="num">US$125</td><td>Yes</td></tr>
-          <tr><td><strong>Additional paper</strong><br><span class="small muted">Same registered author</span></td><td class="num">₹6,000</td><td class="num">₹6,000</td><td class="num">US$250</td><td class="num">US$250</td><td>Yes</td></tr>
-          <tr><td><strong>Extra page</strong><br><span class="small muted">Per page beyond 10, maximum 2</span></td><td class="num">₹1,000</td><td class="num">₹1,000</td><td class="num">US$25</td><td class="num">US$25</td><td>—</td></tr>
-          <tr><td><strong>Accompanying person</strong><br><span class="small muted">Meals and banquet only</span></td><td class="num">₹1,500</td><td class="num">₹1,500</td><td class="num">US$40</td><td class="num">US$40</td><td>No</td></tr>
         </tbody>
         <tfoot><tr><td colspan="6">Fees are indicative and subject to confirmation by the organising committee. GST and other applicable taxes are extra where levied on Indian payments. Delegates from SAARC and low-income economies may request the concessional rate by writing to the organising secretariat with proof of affiliation.</td></tr></tfoot>
       </table>
@@ -165,7 +162,7 @@
       <p>Select your category and add any extras. The figure below is an estimate at the standard rate, for planning only — the amount payable is confirmed on your registration form.</p>
 
       <form class="calc" id="fee-calc" novalidate>
-        <div class="calc__fields">
+        <div class="calc__fields" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
           <div class="calc__field">
             <label for="calc-region">Delegate type</label>
             <select class="field" id="calc-region">
@@ -182,23 +179,10 @@
               <option value="industry">Industry / corporate</option>
             </select>
           </div>
-          <div class="calc__field">
-            <label for="calc-papers">Accepted papers</label>
-            <input class="field" id="calc-papers" type="number" min="1" max="5" step="1" value="1" inputmode="numeric">
-          </div>
-          <div class="calc__field">
-            <label for="calc-pages">Extra pages (beyond 10)</label>
-            <input class="field" id="calc-pages" type="number" min="0" max="2" step="1" value="0" inputmode="numeric">
-          </div>
         </div>
-        <p style="margin-bottom:1.25rem">
-          <label style="font-weight:500;text-transform:none;letter-spacing:0;font-size:.9375rem;color:var(--ink-2)">
-            <input type="checkbox" id="calc-banquet"> Add one accompanying person
-          </label>
-        </p>
-        <div class="calc__out">
+        <div class="calc__out" style="margin-top:1.5rem">
           <div>
-            <span class="eyebrow eyebrow--light" style="margin-bottom:.25rem">Estimated total</span>
+            <span class="eyebrow eyebrow--light" style="margin-bottom:.25rem">Standard fee</span>
             <span class="calc__total" id="calc-total">—</span>
           </div>
           <p class="calc__note" id="calc-breakdown"></p>
