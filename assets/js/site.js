@@ -1,6 +1,6 @@
 /* ==========================================================================
-   ICNGCI 2027 — site behaviour
-   Vanilla JS, no dependencies, no build step.
+   ICICSC 2027 — site behaviour
+   Vanilla JS, no build step, accessible, no external dependencies.
    Every module is defensive: if its markup is not on the page, it no-ops.
    --------------------------------------------------------------------------
    EDIT HERE FIRST: the CONFIG block below drives the countdown, the
@@ -13,13 +13,13 @@
      CONFIG
      ---------------------------------------------------------------------- */
   var CONFIG = {
-    name: "International Conference on Next-Generation Computing and Innovations",
-    acronym: "ICNGCI 2027",
+    name: "International Conference on Intelligent, Connected and Sustainable Computing",
+    acronym: "ICICSC 2027",
     // ISO dates (YYYY-MM-DD). Local midnight is assumed.
-    startDate: "2027-02-19",
-    endDate: "2027-02-20",
-    venue: "Sharda University, Greater Noida, India", // TODO: replace
-    url: "https://icngci2027.sharda.ac.in/" // TODO: replace
+    startDate: "2027-05-28",
+    endDate: "2027-05-29",
+    venue: "Sharda University, Greater Noida, India",
+    url: "https://icicsc2027.sharda.ac.in/"
   };
 
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
@@ -199,12 +199,12 @@
     var end = endISO ? parseDate(endISO) : new Date(start.getTime());
     end.setDate(end.getDate() + 1); // DTEND is exclusive for all-day events
     var stamp = toICSDate(new Date()) + "T000000Z";
-    var uid = "icngci-" + toICSDate(start) + "-" +
-      title.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 40) + "@icngci";
+    var uid = "icicsc-" + toICSDate(start) + "-" +
+      title.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 40) + "@icicsc";
     var lines = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//ICNGCI 2027//Conference Website//EN",
+      "PRODID:-//ICICSC 2027//Conference Website//EN",
       "CALSCALE:GREGORIAN",
       "METHOD:PUBLISH",
       "BEGIN:VEVENT",
@@ -222,7 +222,7 @@
     var blob = new Blob([lines.join("\r\n")], { type: "text/calendar;charset=utf-8" });
     var a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = title.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-icngci-2027.ics";
+    a.download = title.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-icicsc-2027.ics";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -487,19 +487,19 @@
       IN: {
         currency: "INR", symbol: "₹",
         categories: {
-          attendee: { label: "Attendee / Listener", amount: 2500 },
-          student: { label: "Research Scholar / Student", amount: 6500 },
-          academic: { label: "Academician / Faculty", amount: 7500 },
-          industry: { label: "Industry / Corporate", amount: 8000 }
+          attendee: { label: "Attendee / Listener", amount: 3125 },
+          student: { label: "Research Scholar / Student", amount: 8125 },
+          academic: { label: "Academician / Faculty", amount: 9375 },
+          industry: { label: "Industry / Corporate", amount: 10000 }
         }
       },
       FOREIGN: {
         currency: "USD", symbol: "$",
         categories: {
-          attendee: { label: "Attendee / Listener", amount: 50 },
-          student: { label: "Research Scholar / Student", amount: 100 },
-          academic: { label: "Academician / Faculty", amount: 125 },
-          industry: { label: "Industry / Corporate", amount: 125 }
+          attendee: { label: "Attendee / Listener", amount: 65 },
+          student: { label: "Research Scholar / Student", amount: 125 },
+          academic: { label: "Academician / Faculty", amount: 155 },
+          industry: { label: "Industry / Corporate", amount: 155 }
         }
       }
     };
@@ -634,7 +634,7 @@
           get("message")
         ].join("\n");
         var href = "mailto:" + to +
-          "?subject=" + encodeURIComponent("[ICNGCI 2027] " + (get("subject") || "Enquiry")) +
+          "?subject=" + encodeURIComponent("[ICICSC 2027] " + (get("subject") || "Enquiry")) +
           "&body=" + encodeURIComponent(body);
         window.location.href = href;
         var status = $("#contact-status", form);
@@ -688,5 +688,5 @@
     boot();
   }
 
-  window.ICNGCI = { config: CONFIG, downloadICS: downloadICS };
+  window.ICICSC = { config: CONFIG, downloadICS: downloadICS };
 })();

@@ -9,3 +9,8 @@ __pycache__/
 # macOS
 .DS_Store
 node_modules/
+
+# Scratch & extraction scripts/data
+scratch/
+extracted_media/
+extracted_docx_content.txt

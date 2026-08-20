@@ -1,8 +1,6 @@
 /* ==========================================================================
-   ICNGCI 2027 — Design system
-   Visual language adapted from the MIT Department of Chemistry site:
-   Roboto throughout, heavy display weights, squared geometry, white canvas,
-   generous whitespace, saturated multi-hue accents used sparingly.
+   ICICSC 2027 — Design system & styles
+   Vanilla CSS, bespoke design, mobile-first responsive.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -45,6 +43,7 @@
   --t4: #008bff;
   --t5: #2b00aa;
   --t6: #d1600a;
+  --t7: #00897b;
 
   /* Layout */
   --wrap: 1240px;

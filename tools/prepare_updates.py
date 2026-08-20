@@ -1,0 +1,73 @@
+import os
+import re
+
+ROOT = "/Users/supersg/Documents/Random Projects/Conference SIte (IEEE)"
+os.chdir(ROOT)
+
+print("Writing update script for all files...")
+
+# Let's define the script
+script_content = '''
+import os
+import re
+
+# 1. Update tracks.html
+def update_tracks():
+    path = 'tracks.html'
+    with open(path, 'r', encoding='utf-8') as f:
+        c = f.read()
+
+    # Title & Meta
+    c = re.sub(r'<title>.*?</title>', '<title>Technical Tracks — ICICSC 2027</title>', c)
+    c = re.sub(r'<meta content=".*?" name="description"/>', '<meta content="All seven ICICSC 2027 technical tracks and their 70 topic areas, covering AI & Machine Learning, IoT & Cyber-Physical Systems, Robotics, Data Analytics, Blockchain, Cybersecurity, and Computer Vision & Cloud Systems. Searchable." name="description"/>', c)
+    c = re.sub(r'<meta content=".*?" property="og:title"/>', '<meta content="Technical Tracks — ICICSC 2027" property="og:title"/>', c)
+    c = re.sub(r'<meta content=".*?" property="og:description"/>', '<meta content="All seven ICICSC 2027 technical tracks and their 70 topic areas, covering AI & Machine Learning, IoT & Cyber-Physical Systems, Robotics, Data Analytics, Blockchain, Cybersecurity, and Computer Vision & Cloud Systems. Searchable." property="og:description"/>', c)
+
+    # Subtitle in pagehead
+    c = re.sub(r'<p>Six tracks, ninety topic areas.*?</p>', '<p>Seven tracks, seventy topic areas. Search the full list below, or filter by track, to find where your paper belongs.</p>', c)
+
+    # Toolbar filter chips
+    toolbar_chips = """<div class="toolbar">
+<label for="track-search">Find a topic</label>
+<input autocomplete="off" class="field field--grow" id="track-search" placeholder="Try: federated learning, robotics, blockchain, digital twins, cloud, LLMs…" type="search"/>
+<button aria-pressed="true" class="chip" data-track-filter="all" type="button">All tracks</button>
+<button aria-pressed="false" class="chip" data-track-filter="1" type="button">T1 · AI &amp; ML</button>
+<button aria-pressed="false" class="chip" data-track-filter="2" type="button">T2 · IoT &amp; CPS</button>
+<button aria-pressed="false" class="chip" data-track-filter="3" type="button">T3 · Robotics</button>
+<button aria-pressed="false" class="chip" data-track-filter="4" type="button">T4 · Data Analytics</button>
+<button aria-pressed="false" class="chip" data-track-filter="5" type="button">T5 · Blockchain</button>
+<button aria-pressed="false" class="chip" data-track-filter="6" type="button">T6 · Cybersecurity</button>
+<button aria-pressed="false" class="chip" data-track-filter="7" type="button">T7 · Vision &amp; Cloud</button>
+<span class="filter-count" id="track-count"></span>
+</div>"""
+
+    c = re.sub(r'<div class="toolbar">.*?</div>', toolbar_chips, c, flags=re.DOTALL)
+
+    # 7 Tracks articles
+    tracks_articles = """<article class="track" data-track="1" id="track-1" style="--tc:var(--t1)"><div class="track__head"><p class="track__num">Track 1</p><h3>Artificial Intelligence &amp; Machine Learning</h3><p>Foundations, advanced models, and transformative applications of machine intelligence — including generative AI, large language models, reinforcement learning, explainability, and multi-agent systems.</p><div class="sdg-tags" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 9 – Industry, Innovation &amp; Infrastructure</span><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 4 – Quality Education</span></div></div><ul class="track__topics"><li>Deep Learning Architectures and Applications</li><li>Generative AI and Large Language Models (LLMs)</li><li>Reinforcement Learning and Decision Systems</li><li>Natural Language Processing and Understanding</li><li>Explainable, Trustworthy and Responsible AI</li><li>Federated and Distributed Learning</li><li>AI for Healthcare Diagnostics and Biomedical Systems</li><li>Neural Network Optimization Techniques</li><li>Transfer Learning and Few-Shot Learning</li><li>Multi-Agent and Agentic AI Systems</li></ul></article>
+
+<article class="track" data-track="2" id="track-2" style="--tc:var(--t2)"><div class="track__head"><p class="track__num">Track 2</p><h3>Internet of Things &amp; Cyber-Physical Systems</h3><p>Architectures, connected devices, and intelligent cyber-physical environments — covering smart cities, industrial IoT, digital twins, and energy-efficient wearable computing.</p><div class="sdg-tags" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 9 – Industry, Innovation &amp; Infrastructure</span><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 11 – Sustainable Cities</span></div></div><ul class="track__topics"><li>IoT Architectures, Protocols and Standards</li><li>Industrial IoT (IIoT) for Smart Manufacturing</li><li>Smart Cities and Urban Infrastructure</li><li>Wearable and Ubiquitous Computing</li><li>IoT Security, Privacy and Device Authentication</li><li>Edge and Fog Computing for IoT</li><li>Digital Twins for Cyber-Physical Systems</li><li>Precision Agriculture and Agri-Tech using IoT</li><li>Smart Healthcare and Remote Patient Monitoring</li><li>Energy-Efficient and Low-Power IoT Networks</li></ul></article>
+
+<article class="track" data-track="3" id="track-3" style="--tc:var(--t3)"><div class="track__head"><p class="track__num">Track 3</p><h3>Robotics &amp; Intelligent Automation</h3><p>Autonomous systems, physical intelligence, and robotic workflows — from human-robot collaboration and swarm robotics to surgical systems and unmanned aerial vehicles.</p><div class="sdg-tags" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 9 – Industry, Innovation &amp; Infrastructure</span><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 8 – Decent Work &amp; Economic Growth</span></div></div><ul class="track__topics"><li>Autonomous Mobile Robots and Navigation</li><li>Human-Robot Interaction and Collaboration</li><li>Swarm Robotics and Multi-Robot Systems</li><li>Robotic Process Automation (RPA)</li><li>Robot Perception, Sensing and SLAM</li><li>Industrial Robotics and Industry 5.0</li><li>Medical and Surgical Robotics</li><li>Robotic Manipulation, Grasping and Haptics</li><li>Bio-Inspired and Soft Robotics</li><li>Unmanned Aerial Vehicles (UAV) and Autonomous Drones</li></ul></article>
+
+<article class="track" data-track="4" id="track-4" style="--tc:var(--t4)"><div class="track__head"><p class="track__num">Track 4</p><h3>Data Analytics &amp; Big Data</h3><p>Turning large-scale data into actionable intelligence: predictive analytics, real-time stream processing, graph analytics, time-series forecasting, and sustainable data governance.</p><div class="sdg-tags" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 9 – Industry, Innovation &amp; Infrastructure</span><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 12 – Responsible Consumption &amp; Production</span></div></div><ul class="track__topics"><li>Big Data Architectures and Scalable Processing</li><li>Predictive and Prescriptive Analytics</li><li>Real-Time Stream Data Processing</li><li>Data Mining and Pattern Discovery</li><li>Business Intelligence and Decision Support Systems</li><li>Graph-Based Data Analytics and Network Science</li><li>Time-Series Analysis and Forecasting</li><li>Data Warehousing, Lakehouses and ETL Pipelines</li><li>Social Media and Sentiment Analytics</li><li>Analytics for Sustainability and ESG Reporting</li></ul></article>
+
+<article class="track" data-track="5" id="track-5" style="--tc:var(--t5)"><div class="track__head"><p class="track__num">Track 5</p><h3>Blockchain &amp; Distributed Ledger Technologies</h3><p>Decentralized consensus, cryptographic trust, and next-generation distributed ecosystems — including smart contracts, DeFi, supply chain traceability, and scalable layer-2 protocols.</p><div class="sdg-tags" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 16 – Peace, Justice &amp; Strong Institutions</span><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 9 – Industry, Innovation &amp; Infrastructure</span></div></div><ul class="track__topics"><li>Blockchain Architectures and Consensus Mechanisms</li><li>Smart Contracts and Decentralized Applications (DApps)</li><li>Blockchain for Supply Chain Traceability</li><li>Cryptocurrency, Tokenomics and Digital Asset Systems</li><li>Decentralized Finance (DeFi) Protocols</li><li>Blockchain Interoperability and Cross-Chain Bridges</li><li>Blockchain Scalability and Layer-2 Solutions</li><li>Blockchain for Secure Healthcare Record Management</li><li>Non-Fungible Tokens (NFTs) and Digital Ownership</li><li>Energy-Efficient and Green Blockchain Systems</li></ul></article>
+
+<article class="track" data-track="6" id="track-6" style="--tc:var(--t6)"><div class="track__head"><p class="track__num">Track 6</p><h3>Cybersecurity &amp; Privacy</h3><p>Proactive cyber defense, post-quantum security, zero-trust architectures, incident forensics, and AI-powered threat detection for modern critical infrastructure.</p><div class="sdg-tags" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 16 – Peace, Justice &amp; Strong Institutions</span><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 9 – Industry, Innovation &amp; Infrastructure</span></div></div><ul class="track__topics"><li>Network Security, Intrusion Detection and Prevention</li><li>Malware Analysis and Cyber Threat Intelligence</li><li>Cryptography and Post-Quantum Security</li><li>Zero Trust Architecture and Identity Management</li><li>Digital Forensics and Incident Response</li><li>Privacy-Preserving Computation and Differential Privacy</li><li>Cloud, Virtualization and Container Security</li><li>Cybersecurity for Critical Infrastructure and SCADA</li><li>Ethical Hacking and Vulnerability Assessment</li><li>AI-Driven Cyber Threat and Ransomware Mitigation</li></ul></article>
+
+<article class="track" data-track="7" id="track-7" style="--tc:var(--t7)"><div class="track__head"><p class="track__num">Track 7</p><h3>Computer Vision, Cloud &amp; Distributed Systems</h3><p>Visual perception, multimodal intelligence, and scalable cloud computing — spanning medical imaging, object recognition, serverless architectures, and the edge-cloud continuum.</p><div class="sdg-tags" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 9 – Industry, Innovation &amp; Infrastructure</span><span class="chip" style="font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border);">SDG 3 – Good Health &amp; Well-being</span></div></div><ul class="track__topics"><li>Object Detection, Recognition and Tracking</li><li>Medical Image Analysis, Diagnostics and Segmentation</li><li>Facial Recognition and Biometric Vision Systems</li><li>Video Analytics and Intelligent Surveillance</li><li>Multi-Modal Vision-Language Models</li><li>Cloud Service Models, Microservices and Container Orchestration</li><li>Serverless and Function-as-a-Service (FaaS) Computing</li><li>Cloud-Native Application Development and DevOps</li><li>Edge-Cloud Continuum and Distributed Consensus</li><li>Cloud Computing for AI/ML Workloads and Green Computing</li></ul></article>"""
+
+    c = re.sub(r'<article class="track".*?</article>(?=\s*<p class="empty-state")', tracks_articles, c, flags=re.DOTALL)
+    
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(c)
+    print("Updated tracks.html successfully.")
+
+update_tracks()
+'''
+
+with open('tools/run_update.py', 'w', encoding='utf-8') as f:
+    f.write(script_content)
+
+print("run_update.py written.")
