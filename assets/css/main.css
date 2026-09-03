@@ -1973,6 +1973,8 @@ textarea.field { min-height: 140px; resize: vertical; }
   width: 100%;
   padding: 0.2rem 0;
   scrollbar-width: thin;
+  display: flex;
+  justify-content: safe center;
 }
 
 .story-ticker-wrap::-webkit-scrollbar {
@@ -1993,6 +1995,8 @@ textarea.field { min-height: 140px; resize: vertical; }
 
 .story-ticker--speakers {
   animation: none;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .story-ticker--intl {
