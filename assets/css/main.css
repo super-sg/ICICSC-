@@ -1949,12 +1949,20 @@ textarea.field { min-height: 140px; resize: vertical; }
 }
 
 .story-ticker-wrap {
-  overflow: hidden;
+  overflow-x: auto;
   position: relative;
   width: 100%;
   padding: 0.2rem 0;
-  mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
+  scrollbar-width: thin;
+}
+
+.story-ticker-wrap::-webkit-scrollbar {
+  height: 4px;
+}
+
+.story-ticker-wrap::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
 }
 
 .story-ticker {
@@ -1962,11 +1970,10 @@ textarea.field { min-height: 140px; resize: vertical; }
   align-items: stretch;
   gap: 0;
   width: max-content;
-  will-change: transform;
 }
 
 .story-ticker--speakers {
-  animation: scrollStory 50s linear infinite;
+  animation: none;
 }
 
 .story-ticker--intl {
