@@ -2020,8 +2020,8 @@ textarea.field { min-height: 140px; resize: vertical; }
   text-decoration: none !important;
   color: inherit !important;
   flex-shrink: 0;
-  width: 140px;
-  height: 215px;
+  width: 185px;
+  height: 255px;
   position: relative;
   border-radius: 0;
   overflow: hidden;
@@ -2049,7 +2049,7 @@ textarea.field { min-height: 140px; resize: vertical; }
 .story-card__photo-frame {
   position: relative;
   width: 100%;
-  height: 145px;
+  height: 170px;
   overflow: hidden;
   background: #040915;
 }
@@ -2184,8 +2184,8 @@ textarea.field { min-height: 140px; resize: vertical; }
 }
 
 .story-card__info {
-  height: 70px;
-  padding: 0.35rem 0.65rem 0.45rem;
+  height: 85px;
+  padding: 0.45rem 0.75rem 0.5rem;
   background: #091224;
   border-top: none;
   display: flex;
@@ -2193,6 +2193,11 @@ textarea.field { min-height: 140px; resize: vertical; }
   justify-content: center;
   position: relative;
   z-index: 2;
+  text-align: left !important;
+}
+
+.story-card__info * {
+  text-align: left !important;
 }
 
 .story-card__overlay {
@@ -2201,57 +2206,62 @@ textarea.field { min-height: 140px; resize: vertical; }
 
 .committee-showcase .story-card__name,
 .story-card__name {
-  font-size: 0.78rem !important;
+  font-size: 0.825rem !important;
   font-weight: 800 !important;
   color: #ffffff !important;
-  margin: 0 0 0.08rem !important;
+  margin: 0 0 0.1rem !important;
   line-height: 1.2 !important;
+  text-align: left !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .story-card__desig {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-weight: 600;
   color: #38bdf8;
-  margin: 0 0 0.04rem;
+  margin: 0 0 0.05rem;
   line-height: 1.15;
+  text-align: left !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .story-card__dept {
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   font-weight: 500;
   color: #cbd5e1;
-  margin: 0 0 0.04rem;
+  margin: 0 0 0.05rem;
   line-height: 1.15;
+  text-align: left !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .story-card__affil {
-  font-size: 0.63rem;
+  font-size: 0.65rem;
   font-weight: 500;
   color: #94a3b8;
-  margin: 0 0 0.08rem;
+  margin: 0 0 0.1rem;
   line-height: 1.2;
+  text-align: left !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .story-card__country {
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   font-weight: 700;
   color: #38bdf8;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0;
   line-height: 1.2;
+  text-align: left !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2262,13 +2272,13 @@ textarea.field { min-height: 140px; resize: vertical; }
 }
 
 @media (max-width: 768px) {
-  .story-card { width: 115px; height: 175px; }
-  .story-card__photo-frame { height: 115px; }
-  .story-card__info { height: 60px; padding: 0.25rem 0.45rem; }
-  .story-card__country { font-size: 0.52rem; }
+  .story-card { width: 140px; height: 215px; }
+  .story-card__photo-frame { height: 145px; }
+  .story-card__info { height: 70px; padding: 0.35rem 0.55rem; text-align: left !important; }
+  .story-card__country { font-size: 0.55rem; text-align: left !important; }
   .committee-showcase .story-card__name,
-  .story-card__name { font-size: 0.7rem !important; }
-  .story-card__affil { font-size: 0.58rem; }
+  .story-card__name { font-size: 0.75rem !important; text-align: left !important; }
+  .story-card__affil { font-size: 0.6rem; text-align: left !important; }
   .flag-icon-img { width: 22px !important; height: 15px !important; min-width: 22px !important; min-height: 15px !important; }
   .story-card__badge--logo { width: 23px; height: 23px; }
   .story-card__badge--logo-left { width: 22px; height: 22px; }
