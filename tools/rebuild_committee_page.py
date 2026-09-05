@@ -700,7 +700,7 @@ full_html = f"""<!DOCTYPE html>
           </path>
           <circle cx="11" cy="11" fill="#008bff" r="3.6"></circle>
           <circle cx="29" cy="11" fill="#ff2b37" r="3.6"></circle>
-          <circle cx="11" cy="29" fill="#ffcd00" r="3.6"></circle>
+          <circle cx="11" cy="29" fill="#10b981" r="3.6"></circle>
           <circle cx="29" cy="29" fill="#d41e85" r="3.6"></circle>
         </svg>
         <span>

@@ -23,15 +23,15 @@
   --surface-3: #f1f5f9;
   --inverse: #050811;
 
-  /* Accents (High-Contrast Emerald, Mint & Amber Gold) */
+  /* Accents (High-Contrast Emerald, Electric Cyan & Azure) */
   --blue: #059669;
   --blue-bright: #10b981;
   --violet: #047857;
-  --red: #f59e0b;
+  --red: #ef4444;
   --magenta: #0d9488;
-  --orange: #ea580c;
+  --orange: #0284c7;
   --cyan: #06b6d4;
-  --gold: #f59e0b;
+  --gold: #0ea5e9;
 
   --primary: var(--blue);
   --accent: var(--blue-bright);
@@ -39,7 +39,7 @@
   /* Track colour coding */
   --t1: #059669;
   --t2: #0284c7;
-  --t3: #d97706;
+  --t3: #6366f1;
   --t4: #0d9488;
   --t5: #7c3aed;
   --t6: #e11d48;
@@ -138,7 +138,7 @@ hr {
 
 strong, b { color: var(--ink); font-weight: 700; }
 
-::selection { background: var(--gold); color: var(--ink); }
+::selection { background: #0ea5e9; color: #ffffff; }
 
 /* --------------------------------------------------------------------------
    3. Layout helpers
@@ -648,15 +648,15 @@ body.nav-locked { overflow: hidden; }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--gold, #ffcd00);
-  color: #0a0a0a;
+  background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
+  color: #ffffff;
   font-weight: 900;
   font-size: 0.825rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   padding: 0.55rem 1.1rem;
   border-radius: 6px;
-  box-shadow: 0 4px 14px rgba(255, 205, 0, 0.4);
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.45);
   white-space: nowrap;
 }
 
@@ -736,9 +736,9 @@ body.nav-locked { overflow: hidden; }
 }
 
 .announce {
-  background: var(--gold);
-  color: var(--ink);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  background: #0b1329;
+  color: #f8fafc;
+  border-bottom: 1px solid rgba(14, 165, 233, 0.25);
   font-size: 0.875rem;
 }
 .announce__inner {
@@ -1181,12 +1181,12 @@ body.nav-locked { overflow: hidden; }
 .dates__when { font-weight: 700; color: var(--blue); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .dates li.is-past .dates__when { color: var(--muted-2); text-decoration: line-through; }
 .dates li.is-past .dates__label { color: var(--muted); }
-.dates li.is-next { background: linear-gradient(90deg, rgba(255, 205, 0, 0.16), transparent 70%); }
+.dates li.is-next { background: linear-gradient(90deg, rgba(16, 185, 129, 0.16), transparent 70%); }
 .section--ink .dates { border-top-color: #333; }
 .section--ink .dates li { border-bottom-color: #333; }
 .section--ink .dates__label { color: #fff; }
 .section--ink .dates__when { color: var(--cyan); }
-.section--ink .dates li.is-next { background: linear-gradient(90deg, rgba(255, 205, 0, 0.16), transparent 70%); }
+.section--ink .dates li.is-next { background: linear-gradient(90deg, rgba(16, 185, 129, 0.16), transparent 70%); }
 
 /* Headline deadline block — the single thing authors come to the CFP for */
 .deadline {
@@ -1249,7 +1249,7 @@ body.nav-locked { overflow: hidden; }
   white-space: nowrap;
 }
 .badge--live { background: var(--red); color: #fff; }
-.badge--soon { background: var(--gold); color: var(--ink); }
+.badge--soon { background: var(--gold); color: #fff; }
 .badge--done { background: var(--surface-3); color: var(--muted); }
 .badge--new { background: var(--blue); color: #fff; }
 
@@ -1319,7 +1319,7 @@ table.data tfoot td { font-size: 0.8125rem; color: var(--muted); background: var
 .note h4 { margin-bottom: 0.35rem; }
 .note--warn { border-left-color: var(--red); background: #fff3f3; }
 .note--ok { border-left-color: #0a7d38; background: #f0faf3; }
-.note--gold { border-left-color: var(--gold); background: #fffaea; }
+.note--gold { border-left-color: var(--cyan); background: #f0fdfa; }
 
 .checklist { list-style: none; padding: 0; margin: 0 0 var(--sp-5); }
 .checklist li {
@@ -1514,7 +1514,7 @@ select.field { cursor: pointer; }
   height: 6px;
   background: var(--tc, var(--blue));
 }
-.track__topics li mark { background: var(--gold); color: var(--ink); padding: 0 2px; }
+.track__topics li mark { background: rgba(16, 185, 129, 0.2); color: var(--ink); padding: 0 2px; }
 @media (max-width: 720px) { .track__topics { columns: 1; } }
 
 /* --------------------------------------------------------------------------
@@ -1854,7 +1854,7 @@ textarea.field { min-height: 140px; resize: vertical; }
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #ffcd00;
+  color: #38bdf8;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
@@ -1867,14 +1867,14 @@ textarea.field { min-height: 140px; resize: vertical; }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #ffcd00;
-  box-shadow: 0 0 8px #ffcd00;
+  background: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
 }
 
 .carousel-mini-head__line {
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, rgba(255, 205, 0, 0.4), rgba(255, 255, 255, 0.08), transparent);
+  background: linear-gradient(to right, rgba(56, 189, 248, 0.45), rgba(255, 255, 255, 0.08), transparent);
 }
 
 /* ==================== TRACK RECORD PROCEEDINGS CARDS ==================== */
@@ -2175,8 +2175,8 @@ textarea.field { min-height: 140px; resize: vertical; }
 .story-card__badge--text {
   font-size: 0.6rem;
   font-weight: 800;
-  color: #ffcd00 !important;
-  border-color: rgba(255, 205, 0, 0.4) !important;
+  color: #38bdf8 !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 0.18rem 0.45rem;

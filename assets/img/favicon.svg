@@ -3,6 +3,6 @@
   <path d="M11 11h18M11 11v18M29 11v18M11 29h18M11 11l18 18" stroke="#ffffff" stroke-width="1.8" opacity=".55"/>
   <circle cx="11" cy="11" r="4" fill="#008bff"/>
   <circle cx="29" cy="11" r="4" fill="#ff2b37"/>
-  <circle cx="11" cy="29" r="4" fill="#ffcd00"/>
+  <circle cx="11" cy="29" r="4" fill="#10b981"/>
   <circle cx="29" cy="29" r="4" fill="#d41e85"/>
 </svg>
