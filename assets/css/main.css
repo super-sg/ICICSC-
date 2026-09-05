@@ -640,7 +640,7 @@ body.nav-locked { overflow: hidden; }
 .flags-banner__inner {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  width: 100%;
 }
 
 .flags-banner__label {
