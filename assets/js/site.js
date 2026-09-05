@@ -487,9 +487,9 @@
       IN: {
         currency: "INR", symbol: "₹",
         categories: {
-          attendee: { label: "Attendee / Listener", amount: 3125 },
-          student: { label: "Research Scholar / Student", amount: 8125 },
-          academic: { label: "Academician / Faculty", amount: 9375 },
+          attendee: { label: "Attendee / Listener", amount: 3000 },
+          student: { label: "Research Scholar / Student", amount: 8500 },
+          academic: { label: "Academician / Faculty", amount: 9500 },
           industry: { label: "Industry / Corporate", amount: 10000 }
         }
       },
